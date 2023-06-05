@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/yellow"
+    tools:context=".Home">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="580dp"
+        android:orientation="vertical"
+        android:background="@drawable/shape1">
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="300dp"
+            android:layout_height="280dp"
+            android:src="@drawable/image1"
+            android:layout_gravity="center"
+            android:layout_marginTop="5pt"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="2pt"
+            android:layout_marginLeft="18pt">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Departure"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/editDeparture"
+                android:layout_width="120pt"
+                android:layout_height="wrap_content"
+                android:hint="Semarang"
+                android:drawableLeft="@drawable/location"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5pt"
+            android:layout_marginLeft="18pt">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrival"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/editArrival"
+                android:layout_width="120pt"
+                android:layout_height="wrap_content"
+                android:hint="Bandung"
+                android:drawableLeft="@drawable/arrival"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18pt"
+            android:layout_marginTop="8pt"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Passangers"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/editPassangers"
+                    android:layout_width="60pt"
+                    android:layout_height="wrap_content"
+                    android:hint="1ppl"
+                    android:drawableLeft="@drawable/person"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="8pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/editDate"
+                    android:layout_width="60pt"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Date"
+                    android:drawableLeft="@drawable/calendar"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSearchBus"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:text="Search Travel"
+        android:background="@drawable/button_search"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation"/>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
