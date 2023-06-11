@@ -24,7 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class login extends AppCompatActivity {
+public class LoginPage extends AppCompatActivity {
     //Deklarasi Variabel
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -39,7 +39,7 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_page);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
@@ -62,7 +62,7 @@ public class login extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null && user.isEmailVerified()) {
                     //jika ada maka halaman akan langsung berpindah pada Menu Utama
-                    startActivity(new Intent(login.this, Home.class));
+                    startActivity(new Intent(LoginPage.this, HomePage.class));
                     finish();
                 }
             }
@@ -77,7 +77,7 @@ public class login extends AppCompatActivity {
 
                 //mengecek apakah email dan sandi kosong atau tidak
                 if (TextUtils.isEmpty(getEmail) || TextUtils.isEmpty(getPassword)) {
-                    Toast.makeText(login.this, "Email atau Sandi Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPage.this, "Email atau Sandi Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                 } else {
                     loginUserAccount();
                 }
@@ -91,13 +91,13 @@ public class login extends AppCompatActivity {
                                 //Mengecek status keberhasilan saat login
                                 if (task.isSuccessful()) {
                                     if (auth.getCurrentUser().isEmailVerified()) {
-                                        Toast.makeText(login.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(login.this, Home.class);
+                                        Toast.makeText(LoginPage.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(LoginPage.this, HomePage.class);
                                         startActivity(intent);
 
                                     } else {
 
-                                        AlertDialog.Builder alert = new AlertDialog.Builder(login.this);
+                                        AlertDialog.Builder alert = new AlertDialog.Builder(LoginPage.this);
                                         alert.setTitle("Periksa Email anda untuk verifikasi !");
                                         alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                             @Override
@@ -117,7 +117,7 @@ public class login extends AppCompatActivity {
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, register.class);
+                Intent intent = new Intent(LoginPage.this, RegisterPage.class);
                 startActivity(intent);
             }
         });

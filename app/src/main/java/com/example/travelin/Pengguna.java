@@ -7,7 +7,7 @@ public class Pengguna {
     public Pengguna() {
     }
 
-    public Pengguna(String email, String password,String confirmpassword){
+    public Pengguna(String email, String password, String confirmpassword){
         this.email = email;
         this.password = password;
         this.confirmpassword = confirmpassword;
