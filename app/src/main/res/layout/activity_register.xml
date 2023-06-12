@@ -36,16 +36,6 @@
         android:textColorHint="@color/text"
         android:textColor="#000000"
         android:inputType="textPassword" />
-    <EditText
-        android:id="@+id/et_confirm_password"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        android:hint="Confirm Password"
-        android:textColorHint="@color/text"
-        android:textColor="#000000"
-        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btn_register"
@@ -56,7 +46,7 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="50dp"/>
 
     <Button
         android:id="@+id/btn_login"

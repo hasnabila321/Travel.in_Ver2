@@ -62,7 +62,7 @@ public class LoginPage extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null && user.isEmailVerified()) {
                     //jika ada maka halaman akan langsung berpindah pada Menu Utama
-                    startActivity(new Intent(LoginPage.this, HomePage.class));
+                    startActivity(new Intent(LoginPage.this, FinishLoginPage.class));
                     finish();
                 }
             }
@@ -92,7 +92,7 @@ public class LoginPage extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     if (auth.getCurrentUser().isEmailVerified()) {
                                         Toast.makeText(LoginPage.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(LoginPage.this, HomePage.class);
+                                        Intent intent = new Intent(LoginPage.this, FinishLoginPage.class);
                                         startActivity(intent);
 
                                     } else {

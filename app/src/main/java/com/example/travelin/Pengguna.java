@@ -1,16 +1,15 @@
 package com.example.travelin;
 
 public class Pengguna {
-    public String email, password,confirmpassword;
+    public String email, password;
     private String key;
 
     public Pengguna() {
     }
 
-    public Pengguna(String email, String password, String confirmpassword){
+    public Pengguna(String email, String password) {
         this.email = email;
         this.password = password;
-        this.confirmpassword = confirmpassword;
     }
 
     public String getEmail() {
@@ -27,14 +26,6 @@ public class Pengguna {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getConfirmpassword() {
-        return confirmpassword;
-    }
-
-    public void setConfirmPassword(String password) {
-        this.confirmpassword = password;
     }
 
     public String getKey() {
