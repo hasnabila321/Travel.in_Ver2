@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,14 +21,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginPage extends AppCompatActivity {
     //Deklarasi Variabel
     GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
+    GoogleSignInClient mGoogleSignClient;
 
     private EditText et_email, et_password;
     private Button btnlogin, btnregister, btngoogle;
@@ -42,7 +45,7 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gsc = GoogleSignIn.getClient(this,gso);
+        mGoogleSignClient = GoogleSignIn.getClient(this,gso);
 
         //Inisialisasi Widget
         et_email = findViewById(R.id.et_email);
@@ -112,7 +115,10 @@ public class LoginPage extends AppCompatActivity {
                             }
                         });
             }
+
         });
+
+
 
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +128,7 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
+
         btngoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,10 +136,17 @@ public class LoginPage extends AppCompatActivity {
             }
 
             private void signIn() {
-                Intent signtInIntent = gsc.getSignInIntent();
+                Intent signtInIntent = mGoogleSignClient.getSignInIntent();
                 startActivityForResult(signtInIntent,1000);
             }
         });
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.webclientid))
+                .requestEmail()
+                .build();
+
+        mGoogleSignClient = GoogleSignIn.getClient(this,gso);
 
         }
 
@@ -141,12 +155,34 @@ public class LoginPage extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
             if(requestCode == 1000) {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
                 try {
-                    task.getResult(ApiException.class);
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    Log.d("Google Sign In","firabaseAuthWithGoogle:" + account.getId());
+                    firebaseAuthWithGoogle(account.getIdToken());
                 }catch (ApiException e) {
-                    Toast.makeText(getApplicationContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
+                    Log.w("Google Sign In","Google Sign Failed");
                 }
             }
+        }
+
+        private void firebaseAuthWithGoogle(String idToken){
+            AuthCredential credential = GoogleAuthProvider.getCredential(idToken,null);
+            auth.signInWithCredential(credential)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                Log.d("Google Sign In","signInWithCredential:succes");
+                                FirebaseUser user = auth.getCurrentUser();
+                            }else{
+                                Log.w("Google Sign In","signInWithCredential:failure", task.getException());
+                            }
+                            reload();
+                        }
+
+                        private void reload() {
+                            startActivity(new Intent(getApplicationContext(),FinishLoginPage.class));
+                        }
+                    });
         }
     }
