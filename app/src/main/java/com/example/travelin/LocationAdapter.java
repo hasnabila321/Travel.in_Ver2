@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class SearchLocationResultAdapter extends RecyclerView.Adapter<SearchLocationResultAdapter.ViewHolder> {
+public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder> {
     private Context mContext;
-    private List<SearchLocationItemsRV> mItemsSearchList;
+    private List<LocationItemsRV> mlocationList;
 
-    public SearchLocationResultAdapter(Context context, List<SearchLocationItemsRV> itemsSearchList){
+    public LocationAdapter(Context context, List<LocationItemsRV> locationList){
         this.mContext = context;
-        this.mItemsSearchList = itemsSearchList;
+        this.mlocationList = locationList;
     }
 
     private ListItemClickListener clickListener;
@@ -32,30 +32,33 @@ public class SearchLocationResultAdapter extends RecyclerView.Adapter<SearchLoca
 
     @NonNull
     @Override
-    public SearchLocationResultAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LocationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_location_viewholder, parent, false);
 
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchLocationResultAdapter.ViewHolder holder, int position) {
-        SearchLocationItemsRV searchLocationItemsRVList = mItemsSearchList.get(position);
+    public void onBindViewHolder(@NonNull LocationAdapter.ViewHolder holder, int position) {
+        LocationItemsRV locationItemsRVList = mlocationList.get(position);
 
-        holder.mCity.setText(searchLocationItemsRVList.getSearchLocationInput());
+        holder.mCity.setText(locationItemsRVList.getLocationInput());
+        holder.mCityDetails.setText(locationItemsRVList.getLocationDetails());
     }
 
     @Override
     public int getItemCount() {
-        return mItemsSearchList.size();
+        return mlocationList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mCity;
+        private TextView mCityDetails;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mCity = itemView.findViewById(R.id.city);
+            mCityDetails = itemView.findViewById(R.id.city_detail);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
