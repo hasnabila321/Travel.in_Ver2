@@ -3,24 +3,22 @@ package com.example.travelin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 
 public class HomePage extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
-    private Button departure;
-    private Button arrival;
-    private Button date;
+    private Button btnDeparture;
+    private Button btnArrival;
+    private Button btnDate;
+    private Button btnSearchBus;
     private DatePickerDialog datePickerDialog;
 
     @Override
@@ -28,30 +26,35 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        departure = findViewById(R.id.inputDeparture);
-        arrival = findViewById(R.id.inputArrival);
-        date = findViewById(R.id.editDate);
+        btnDeparture = findViewById(R.id.btnDeparture);
+        btnArrival = findViewById(R.id.btnArrival);
+        btnDate = findViewById(R.id.btnDate);
+        btnSearchBus = findViewById(R.id.btnSearchBus);
 
         //DisableKeyboard
-        departure.setShowSoftInputOnFocus(false);
-        arrival.setShowSoftInputOnFocus(false);
+        btnDeparture.setShowSoftInputOnFocus(false);
+        btnArrival.setShowSoftInputOnFocus(false);
 
-        departure.setOnClickListener(this);
-        arrival.setOnClickListener(this);
-        date.setOnClickListener(this);
+        btnDeparture.setOnClickListener(this);
+        btnArrival.setOnClickListener(this);
+        btnDate.setOnClickListener(this);
+        btnSearchBus.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.inputDeparture){
+        if(v.getId() == R.id.btnDeparture){
             Intent intent = new Intent(HomePage.this, LocationPage.class);
             startActivityForResult(intent, 1);
-        }else if(v.getId() == R.id.inputArrival){
+        }else if(v.getId() == R.id.btnArrival){
             Intent intent = new Intent(HomePage.this, LocationPage.class);
             startActivityForResult(intent, 2);
-        }else if(v.getId() == R.id.editDate){
+        }else if(v.getId() == R.id.btnDate){
             DialogFragment datePicker = new DatePickerFragment();
             datePicker.show(getSupportFragmentManager(), "date picker");
+        }else if(v.getId() == R.id.btnSearchBus){
+            Intent intent = new Intent(HomePage.this, BusListPage.class);
+            startActivity(intent);
         }
     }
 
@@ -63,13 +66,13 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
             if(resultCode == RESULT_FIRST_USER){
                 LocationItemsRV location = data.getParcelableExtra("location");
                 Toast.makeText(getApplicationContext(), "You Click On "+location.getLocationInput()+location.getLocationDetails(), Toast.LENGTH_SHORT).show();
-                departure.setText(location.getLocationDetails());
+                btnDeparture.setText(location.getLocationDetails());
             }
         }else if (requestCode == 2){
             if(resultCode == RESULT_FIRST_USER){
                 LocationItemsRV location = data.getParcelableExtra("location");
                 Toast.makeText(getApplicationContext(), "You Click On "+location.getLocationInput()+location.getLocationDetails(), Toast.LENGTH_SHORT).show();
-                arrival.setText(location.getLocationDetails());
+                btnArrival.setText(location.getLocationDetails());
             }
         }
     }
@@ -82,6 +85,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-        date.setText(currentDateString);
+        btnDate.setText(currentDateString);
     }
 }

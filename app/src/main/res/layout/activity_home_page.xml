@@ -38,12 +38,13 @@
                 android:layout_marginLeft="10dp"/>
 
             <Button
-                android:id="@+id/inputDeparture"
+                android:id="@+id/btnDeparture"
                 android:layout_width="120pt"
                 android:layout_height="wrap_content"
-                android:background="@drawable/pseudo_edittext_homapage"
+                android:background="@drawable/button_edittext_style"
                 android:drawableLeft="@drawable/location"
                 android:hint="Semarang"
+                android:singleLine="true"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="#717171"
@@ -67,11 +68,12 @@
                 android:layout_marginLeft="10dp"/>
 
             <Button
-                android:id="@+id/inputArrival"
+                android:id="@+id/btnArrival"
                 android:layout_width="120pt"
                 android:layout_height="wrap_content"
-                android:background="@drawable/pseudo_edittext_homapage"
+                android:background="@drawable/button_edittext_style"
                 android:drawableLeft="@drawable/arrival"
+                android:singleLine="true"
                 android:text="Bandung"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
@@ -132,14 +134,15 @@
 <!--                    android:inputType="date" />-->
 
                 <Button
-                    android:id="@+id/editDate"
+                    android:id="@+id/btnDate"
                     android:layout_width="120pt"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/pseudo_edittext_homapage"
+                    android:background="@drawable/button_edittext_style"
                     android:drawableLeft="@drawable/calendar"
                     android:ems="10"
                     android:hint="Select Date"
                     android:inputType="date"
+                    android:singleLine="true"
                     android:textAlignment="textStart"
                     android:textColor="#717171"
                     android:textSize="20sp"
