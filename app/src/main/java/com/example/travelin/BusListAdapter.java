@@ -55,8 +55,8 @@ public class BusListAdapter extends RecyclerView.Adapter<BusListAdapter.ViewHold
         holder.arrivalLoc.setText(busItem.getArrivalLoc());
         holder.arrivalLocDetails.setText(busItem.getArrivalLocDetails());
         holder.arrivalTime.setText(busItem.getArrivalTime());
-        holder.price.setText(String.valueOf(busItem.getPrice()));
-        holder.rating.setText(String.valueOf(busItem.getRating()));
+        holder.price.setText("Rp"+String.valueOf(busItem.getPrice()));
+        holder.rating.setText(String.valueOf(busItem.getRating())+"/5");
         holder.totalReviewers.setText(String.valueOf(busItem.getTotalReviewers()));
         holder.availableSeat.setText(String.valueOf(busItem.getAvailableSeat()));
     }

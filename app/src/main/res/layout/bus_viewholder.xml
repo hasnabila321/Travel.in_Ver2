@@ -106,40 +106,6 @@
                     app:layout_constraintStart_toEndOf="@+id/tvArrivalTime"
                     app:layout_constraintTop_toBottomOf="@+id/tvDepartureDetails" />
 
-                <View
-                    android:id="@+id/view3"
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:background="@drawable/button_small"
-                    android:backgroundTint="#FFD03D"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvBusRate"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="4.9/5"
-                    android:textAlignment="center"
-                    android:textColor="#8C6F12"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/view3"
-                    app:layout_constraintTop_toTopOf="@+id/view3" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="4dp"
-                    app:layout_constraintStart_toStartOf="@+id/view3"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/star" />
-
                 <TextView
                     android:id="@+id/tvDepartureCity"
                     android:layout_width="wrap_content"
@@ -170,7 +136,7 @@
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view3" />
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -181,6 +147,42 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvBusReviewers" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_small"
+                    android:backgroundTint="#FFD03D"
+                    android:paddingStart="7dp"
+                    android:paddingTop="7dp"
+                    android:paddingEnd="7dp"
+                    android:paddingBottom="7dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/star" />
+
+                    <TextView
+                        android:id="@+id/tvBusRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.9/5"
+                        android:textAlignment="center"
+                        android:textColor="#8C6F12"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                        app:layout_constraintVertical_bias="0.0" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -54,6 +54,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
             datePicker.show(getSupportFragmentManager(), "date picker");
         }else if(v.getId() == R.id.btnSearchBus){
             Intent intent = new Intent(HomePage.this, BusListPage.class);
+            intent.putExtra("departureLocation", btnDeparture.getText().toString());
+            intent.putExtra("arrivalLocation", btnArrival.getText().toString());
+            intent.putExtra("date", btnDate.getText().toString());
             startActivity(intent);
         }
     }

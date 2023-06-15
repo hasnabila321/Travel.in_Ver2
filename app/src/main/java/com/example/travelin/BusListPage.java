@@ -7,12 +7,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BusListPage extends AppCompatActivity implements BusListAdapter.ListItemClickListener{
+public class BusListPage extends AppCompatActivity implements BusListAdapter.ListItemClickListener, View.OnClickListener {
+    private Button btnChangeSearch;
+    private TextView tvDeparture;
+    private TextView tvArrival;
+    private TextView tvDate;
     private RecyclerView rvBus;
     private List<BusItem> busList;
 
@@ -21,7 +27,22 @@ public class BusListPage extends AppCompatActivity implements BusListAdapter.Lis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_list_page);
 
+        btnChangeSearch = findViewById(R.id.btnChangeSearch);
+        tvDeparture = findViewById(R.id.tvDepartureLocation);
+        tvArrival = findViewById(R.id.tvArrivalLocation);
+        tvDate = findViewById(R.id.tvDate);
         rvBus = findViewById(R.id.rvBusList);
+
+        Bundle data = getIntent().getExtras();
+        String arrivalLocation = data.getString("arrivalLocation");
+        String departureLocation = data.getString("departureLocation");
+        String date = data.getString("date");
+
+        tvDeparture.setText(departureLocation);
+        tvArrival.setText(arrivalLocation);
+        tvDate.setText(date);
+
+        btnChangeSearch.setOnClickListener(this);
 
         busList = new ArrayList<>();
 
@@ -44,7 +65,15 @@ public class BusListPage extends AppCompatActivity implements BusListAdapter.Lis
     public void onListItemClick(View v, int position) {
         BusItem selectedItems = busList.get(position);
         Toast.makeText(getApplicationContext(), "You Click On "+position, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, HomePage.class);
+        Intent intent = new Intent(this, BookingSeatPage.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btnChangeSearch){
+            Intent intent = new Intent(this, HomePage.class);
+            startActivity(intent);
+        }
     }
 }
