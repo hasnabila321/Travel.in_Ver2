@@ -677,7 +677,7 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnBookNow"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

@@ -13,7 +13,7 @@
         android:id="@+id/cardView1"
         android:layout_width="0dp"
         android:layout_height="58dp"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/btnBookNow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -57,7 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="58dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/btnBookNow"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,7 +95,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnBookNow"
         android:layout_width="20dp"
         android:layout_height="58dp"
         android:background="@null"
@@ -110,7 +110,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3">
+        app:layout_constraintTop_toBottomOf="@+id/btnBookNow">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

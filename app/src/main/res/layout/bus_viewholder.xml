@@ -77,10 +77,12 @@
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_height="0dp"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/dashed_line_bus_list"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/dashed_line"
+                    app:layout_constraintBottom_toTopOf="@+id/tvArrivalTime"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDepartureTime" />
 
@@ -88,23 +90,23 @@
                     android:id="@+id/tvArrivalTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="37dp"
                     android:text="00:00"
                     android:textColor="#585858"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/tvArrivalDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="21dp"
-                    android:layout_marginTop="49dp"
+                    android:layout_marginBottom="3dp"
                     android:text="Arrival City Details"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@+id/tvArrivalTime"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDepartureDetails" />
+                    app:layout_constraintBottom_toTopOf="@+id/tvArrivalCity"
+                    app:layout_constraintStart_toEndOf="@+id/tvArrivalTime" />
 
                 <TextView
                     android:id="@+id/tvDepartureCity"
@@ -122,11 +124,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="21dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="17dp"
                     android:text="Arrival City"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@+id/tvArrivalTime"
-                    app:layout_constraintTop_toBottomOf="@+id/tvArrivalDetails" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvArrivalTime" />
 
                 <TextView
                     android:id="@+id/tvBusReviewers"

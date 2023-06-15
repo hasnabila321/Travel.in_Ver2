@@ -1,5 +1,6 @@
 package com.example.travelin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class BookingSeatPage extends AppCompatActivity implements View.OnClickListener {
 
-    private Button search_buses;
+    private Button btnBookNow;
     private ImageView seatA1, seatA2, seatA3, seatA4, seatA5, seatA6;
     private ImageView seatB1, seatB2, seatB3, seatB4, seatB5, seatB6;
     private ImageView seatC1, seatC2, seatC3, seatC4, seatC5, seatC6;
@@ -22,6 +23,10 @@ public class BookingSeatPage extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_seat);
+
+        btnBookNow = findViewById(R.id.btnBookNow);
+
+        btnBookNow.setOnClickListener(this);
 
         seatA1 = findViewById(R.id.seatA1);
         seatA2 = findViewById(R.id.seatA2);
@@ -107,22 +112,14 @@ public class BookingSeatPage extends AppCompatActivity implements View.OnClickLi
         seatD4.setOnClickListener(this);
         seatD5.setOnClickListener(this);
         seatD6.setOnClickListener(this);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        setContentView(R.layout.activity_main);
-//        search_buses = findViewById(R.id.search_buses);
-//        search_buses.setOnClickListener(view -> {
-//            Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
-//            startActivity(intent);
-//        });
     }
 
     @Override
     public void onClick(View v) {
-        // Pake if yg ini buat ngatur2 tombol
-//        if(){
-
-//        }else {
+        if(v.getId() == R.id.btnBookNow){
+            Intent intent = new Intent(this, CompleteBookPage.class);
+            startActivity(intent);
+        }else {
             int i = 0;
             String seatId = ""; // nyimpen nama kursi yg dipilih
             int selectedSeat; // nyimpen nomor urutan array kursi ke berapa yg kita pilih
@@ -144,6 +141,6 @@ public class BookingSeatPage extends AppCompatActivity implements View.OnClickLi
             // Disini tinggal ngubah warna kursi jadi available sama ngecek kursi available atau ngga
             // Jangan lupa masukin kursi mana aja yg mau di booking
 
-//        }
+        }
     }
 }
