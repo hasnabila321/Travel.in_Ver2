@@ -6,11 +6,11 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class LocationItemsRV implements Parcelable {
-    private String locationInput;
+    private String locationCity;
     private String locationDetails;
 
     protected LocationItemsRV(Parcel in){
-        locationInput = in.readString();
+        locationCity = in.readString();
         locationDetails = in.readString();
     }
 
@@ -26,17 +26,18 @@ public class LocationItemsRV implements Parcelable {
         }
     };
 
-    public LocationItemsRV(String locationInput, String locationDetails) {
-        this.locationInput = locationInput;
+    public LocationItemsRV(){}
+    public LocationItemsRV(String locationCity, String locationDetails) {
+        this.locationCity = locationCity;
         this.locationDetails = locationDetails;
     }
 
-    public String getLocationInput() {
-        return locationInput;
+    public String getLocationCity() {
+        return locationCity;
     }
 
-    public void setLocationInput(String locationInput) {
-        this.locationInput = locationInput;
+    public void setLocationCity(String locationCity) {
+        this.locationCity = locationCity;
     }
 
     public String getLocationDetails() {
@@ -54,7 +55,7 @@ public class LocationItemsRV implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(locationInput);
+        dest.writeString(locationCity);
         dest.writeString(locationDetails);
     }
 }

@@ -9,25 +9,38 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import java.util.List;
 
-public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder> {
+public class LocationAdapter extends FirebaseRecyclerAdapter<LocationItemsRV, LocationAdapter.ViewHolder> {
     private Context mContext;
-    private List<LocationItemsRV> mlocationList;
-
-    public LocationAdapter(Context context, List<LocationItemsRV> locationList){
-        this.mContext = context;
-        this.mlocationList = locationList;
-    }
-
     private ListItemClickListener clickListener;
+    private List<LocationAdapter> mItemsRVList;
+    LocationPage locationPage;
 
-    public interface ListItemClickListener{
-        public void onListItemClick(View v, int position);
+    public LocationAdapter(@NonNull FirebaseRecyclerOptions<LocationItemsRV> options, @NonNull Context context){
+        super(options);
+        this.mContext = context;
     }
 
-    public void setListener(ListItemClickListener listener){
-        this.clickListener = listener;
+    @Override
+    protected void onBindViewHolder(@NonNull LocationAdapter.ViewHolder holder, int position, @NonNull LocationItemsRV model) {
+//        LocationItemsRV locationItemsRV = mItemsRVList.get(position);
+        holder.mCity.setText(model.getLocationCity());
+        holder.mCityDetails.setText(model.getLocationDetails());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(mContext, HomePage.class);
+//                intent.putExtra("city", model.getLocationCity());
+//                intent.putExtra("cityDetails", model.getLocationDetails());
+//                locationPage.setResult(RESULT_FIRST_USER, intent);
+//                locationPage.finish();
+////                mContext.startActivity(intent);
+            }
+        });
     }
 
     @NonNull
@@ -38,17 +51,12 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
         return new ViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull LocationAdapter.ViewHolder holder, int position) {
-        LocationItemsRV locationItemsRVList = mlocationList.get(position);
-
-        holder.mCity.setText(locationItemsRVList.getLocationInput());
-        holder.mCityDetails.setText(locationItemsRVList.getLocationDetails());
+    public interface ListItemClickListener{
+        public void onListItemClick(View v, int position);
     }
 
-    @Override
-    public int getItemCount() {
-        return mlocationList.size();
+    public void setListener(ListItemClickListener listener){
+        this.clickListener = listener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

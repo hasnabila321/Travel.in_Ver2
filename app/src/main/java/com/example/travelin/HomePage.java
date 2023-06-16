@@ -45,9 +45,11 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
     public void onClick(View v) {
         if(v.getId() == R.id.btnDeparture){
             Intent intent = new Intent(HomePage.this, LocationPage.class);
+            intent.putExtra("destination", "Location/Departure");
             startActivityForResult(intent, 1);
         }else if(v.getId() == R.id.btnArrival){
             Intent intent = new Intent(HomePage.this, LocationPage.class);
+            intent.putExtra("destination", "Location/Arrival");
             startActivityForResult(intent, 2);
         }else if(v.getId() == R.id.btnDate){
             DialogFragment datePicker = new DatePickerFragment();
@@ -68,13 +70,13 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
         if (requestCode == 1){
             if(resultCode == RESULT_FIRST_USER){
                 LocationItemsRV location = data.getParcelableExtra("location");
-                Toast.makeText(getApplicationContext(), "You Click On "+location.getLocationInput()+location.getLocationDetails(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You Click On "+location.getLocationCity()+location.getLocationDetails(), Toast.LENGTH_SHORT).show();
                 btnDeparture.setText(location.getLocationDetails());
             }
         }else if (requestCode == 2){
             if(resultCode == RESULT_FIRST_USER){
                 LocationItemsRV location = data.getParcelableExtra("location");
-                Toast.makeText(getApplicationContext(), "You Click On "+location.getLocationInput()+location.getLocationDetails(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You Click On "+location.getLocationCity()+location.getLocationDetails(), Toast.LENGTH_SHORT).show();
                 btnArrival.setText(location.getLocationDetails());
             }
         }
