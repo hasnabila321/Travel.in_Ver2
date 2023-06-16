@@ -2,6 +2,7 @@ package com.example.travelin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -9,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BookingSeatPage extends AppCompatActivity implements View.OnClickListener {
+public class  BookingSeatPage extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnBookNow;
     private ImageView seatA1, seatA2, seatA3, seatA4, seatA5, seatA6;
@@ -140,6 +141,80 @@ public class BookingSeatPage extends AppCompatActivity implements View.OnClickLi
 
             // Disini tinggal ngubah warna kursi jadi available sama ngecek kursi available atau ngga
             // Jangan lupa masukin kursi mana aja yg mau di booking
+
+            Log.i("Seat Id",seatId);
+            if(v.getId() == R.id.seatA1){
+                seatA1.setImageResource(R.drawable.your_seat_img);
+            } else if (v.getId() == R.id.seatA2) {
+                seatA2.setImageResource(R.drawable.your_seat_img);
+
+            } else if (v.getId() == R.id.seatA3) {
+                seatA3.setImageResource(R.drawable.your_seat_img);
+
+            } else if (v.getId() == R.id.seatA4) {
+                seatA4.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatA5) {
+                seatA5.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatA6) {
+                seatA6.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatB1) {
+                seatB1.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatB2) {
+                seatB2.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatB3) {
+                seatB3.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatB4) {
+                seatB4.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatB5) {
+                seatB5.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatB6) {
+                seatB6.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatC1) {
+                seatC1.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatC2) {
+                seatC2.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatC3) {
+                seatC3.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatC4) {
+                seatC4.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatC5) {
+                seatC5.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatC6) {
+                seatC6.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatD1) {
+                seatD1.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatD2) {
+                seatD2.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatD3) {
+                seatD3.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatD4) {
+                seatD4.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatD5) {
+                seatD5.setImageResource(R.drawable.your_seat_img);
+
+            }else if (v.getId() == R.id.seatD6) {
+                seatD6.setImageResource(R.drawable.your_seat_img);
+
+            }
 
         }
     }
